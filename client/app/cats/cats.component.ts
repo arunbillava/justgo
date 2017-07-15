@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { CatService } from '../services/cat.service';
+import { PlaceService } from '../services/place.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
@@ -12,43 +13,45 @@ import { ToastComponent } from '../shared/toast/toast.component';
 })
 export class CatsComponent implements OnInit {
 
-  cat = {};
-  cats = [];
+  place = {};
+  places = [];
   isLoading = true;
   isEditing = false;
 
   addCatForm: FormGroup;
   name = new FormControl('', Validators.required);
-  age = new FormControl('', Validators.required);
-  weight = new FormControl('', Validators.required);
+  when = new FormControl('', Validators.required);
+  teamSize = new FormControl('', Validators.required);
+  description = new FormControl('', Validators.required);
 
-  constructor(private catService: CatService,
+  constructor(private placeService: PlaceService,
               private formBuilder: FormBuilder,
               private http: Http,
               public toast: ToastComponent) { }
 
   ngOnInit() {
-    this.getCats();
+    this.getPlace();
     this.addCatForm = this.formBuilder.group({
       name: this.name,
-      age: this.age,
-      weight: this.weight
+      when: this.when,
+      teamSize: this.teamSize,
+      description:this.description
     });
   }
 
-  getCats() {
-    this.catService.getCats().subscribe(
-      data => this.cats = data,
+  getPlace() {
+    this.placeService.getPlaces().subscribe(
+      data => this.places = data,
       error => console.log(error),
       () => this.isLoading = false
     );
   }
 
-  addCat() {
-    this.catService.addCat(this.addCatForm.value).subscribe(
+  addPlace() {
+    this.placeService.addPlace(this.addCatForm.value).subscribe(
       res => {
-        const newCat = res.json();
-        this.cats.push(newCat);
+        const newPlace = res.json();
+        this.places.push(newPlace);
         this.addCatForm.reset();
         this.toast.setMessage('item added successfully.', 'success');
       },
@@ -56,36 +59,36 @@ export class CatsComponent implements OnInit {
     );
   }
 
-  enableEditing(cat) {
+  enableEditing(place) {
     this.isEditing = true;
-    this.cat = cat;
+    this.place = place;
   }
 
   cancelEditing() {
     this.isEditing = false;
-    this.cat = {};
+    this.place = {};
     this.toast.setMessage('item editing cancelled.', 'warning');
     // reload the cats to reset the editing
-    this.getCats();
+    this.getPlace();
   }
 
-  editCat(cat) {
-    this.catService.editCat(cat).subscribe(
+  editPlace(place) {
+    this.placeService.editplace(place).subscribe(
       res => {
         this.isEditing = false;
-        this.cat = cat;
+        this.place = place;
         this.toast.setMessage('item edited successfully.', 'success');
       },
       error => console.log(error)
     );
   }
 
-  deleteCat(cat) {
+  deletePlace(place) {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
-      this.catService.deleteCat(cat).subscribe(
+      this.placeService.deleteplace(place).subscribe(
         res => {
-          const pos = this.cats.map(elem => elem._id).indexOf(cat._id);
-          this.cats.splice(pos, 1);
+          const pos = this.places.map(elem => elem._id).indexOf(place._id);
+          this.places.splice(pos, 1);
           this.toast.setMessage('item deleted successfully.', 'success');
         },
         error => console.log(error)

@@ -1,5 +1,4 @@
-# Angular Full Stack [![Dependencies](https://david-dm.org/DavideViolante/Angular2-Full-Stack.svg)](https://david-dm.org/DavideViolante/Angular2-Full-Stack) [![Donate](https://img.shields.io/badge/paypal-donate-179BD7.svg)](https://www.paypal.me/dviolante) [![MIT license](http://img.shields.io/badge/license-MIT-lightgrey.svg)](http://opensource.org/licenses/MIT)
-
+# Travel Just Go
 
 The frontend is generated with [Angular CLI](https://github.com/angular/angular-cli). The backend is made from scratch. Whole stack in [TypeScript](https://www.typescriptlang.org).
 
@@ -31,28 +30,6 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 ### Production mode
 `npm run prod`: run the project with a production bundle and AOT compilation listening at [localhost:3000](http://localhost:3000) 
 
-## Deploy (Heroku)
-1. Go to Heroku and create a new app
-2. Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-3. `heroku login`
-4. `cd my-project/`
-5. `git init`
-6. `heroku git:remote -a your-app-name`
-7. Download this repo and copy all files into `my-project` folder
-8. Edit `.gitignore` and remove line with `/dist`
-9. Edit `.env` and replace the MongoDB URI with a real remote MongoDB server. You can create a MongoDB server with Heroku or mLab.
-10. `npm i`
-11. `ng build -prod` or `ng build -aot -prod`
-12. `tsc -p server`
-13. `git add .`
-14. `git commit -m "Going to Heroku"`
-15. `git push heroku master`
-16. `heroku open`
-17. A window will open with your app online
-
-## Preview
-![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Full-Stack/master/demo.gif "Preview")
-
 ## Please open an issue if
 * you have any suggestion to improve this project
 * you noticed any problem or error
@@ -74,7 +51,7 @@ Run `ng lint` (frontend) and `npm run lintbe` (backend) to execute the linter vi
 ## Further help
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-To get more help about this project, [visit the wiki](https://github.com/DavideViolante/Angular-Full-Stack/wiki).
+To get more help about this project, [Contact] billavaa@gmail.com .
 
 ### Author
-* [Davide Violante](https://github.com/DavideViolante)
+Arun billava, Neeraj Shah
